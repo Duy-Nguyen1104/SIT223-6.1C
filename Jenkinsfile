@@ -14,23 +14,18 @@ pipeline {
             }
             post {
                 success {
-                    script {
-                        archiveArtifacts artifacts: '**/*', excludes: ''
-                        mail to: "duyng2311@gmail.com",
-                             subject: "Jenkins Pipeline: Unit and Integration Tests Stage - ${currentBuild.currentResult}",
-                             body: "The Unit and Integration Tests stage has completed with status: ${currentBuild.currentResult}.",
-                             attachmentsPattern: 'archive/**/*.log'
-                    }
+                    emailext subject: "Jenkins Pipeline: Unit and Integration Tests Stage - ${currentBuild.currentResult}",
+                            body: "The Unit and Integration Tests stage has completed with status: ${currentBuild.currentResult}",
+                            attachLog: true,
+                            to: "duyng2311@gmail.com"
                 }
                 failure {
-                    script {
-                        archiveArtifacts artifacts: '**/*', excludes: ''
-                        mail to: "duyng2311@gmail.com",
-                             subject: "Jenkins Pipeline: Unit and Integration Tests Stage - ${currentBuild.currentResult}",
-                             body: "Unit and integration tests failed. ${currentBuild.currentResult}.",
-                             attachmentsPattern: 'archive/**/*.log'
-                    }
+                    emailext subject: "Jenkins Pipeline: Unit and Integration Tests Stage - ${currentBuild.currentResult}",
+                            body: "The Unit and integration tests failed. ${currentBuild.currentResult}",
+                            attachLog: true,
+                            to: "duyng2311@gmail.com"
                 }
+                
             }
         }
         
@@ -44,25 +39,21 @@ pipeline {
             steps {
                  echo 'Performing security scan with Snyk Code'
             }
+            
             post {
                 success {
-                    script {
-                        archiveArtifacts artifacts: '**/*', excludes: ''
-                        mail to: "duyng2311@gmail.com",
-                             subject: "Jenkins Security Scan Notification - ${currentBuild.currentResult}",
-                             body: "The Security Scan stage has completed with status: ${currentBuild.currentResult}.",
-                             attachmentsPattern: 'archive/**/*.log'
-                    }
+                    emailext subject: "Jenkins Security Scan Notification - ${currentBuild.currentResult}",
+                            body: "The Security Scan stage has completed with status: ${currentBuild.currentResult}.",
+                            attachLog: true,
+                            to: "duyng2311@gmail.com"
                 }
                 failure {
-                    script {
-                        archiveArtifacts artifacts: '**/*', excludes: ''
-                        mail to: "duyng2311@gmail.com",
-                             subject: "Jenkins Security Scan Notification - ${currentBuild.currentResult}",
-                             body: "Security scan failed. ${currentBuild.currentResult}.",
-                             attachmentsPattern: 'archive/**/*.log'
-                    }
+                    emailext subject: "Jenkins Security Scan Notification - ${currentBuild.currentResult}",
+                            body: "Security scan failed. ${currentBuild.currentResult}",
+                            attachLog: true,
+                            to: "duyng2311@gmail.com"
                 }
+                
             }
         }
         
@@ -85,18 +76,5 @@ pipeline {
         }
     }
 
-     post {
-        failure {
-            emailext subject: "Pipeline Failed",
-                     body: "Pipeline failed. See attached logs for details.",
-                     attachLog: true,
-                     to: "duyng2311@gmail.com"
-        }
-        success {
-            emailext subject: "Pipeline Succeeded",
-                     body: "Pipeline succeeded. See attached logs for details.",
-                     attachLog: true,
-                     to: "duyng2311@gmail.com"
-        }
-    }
+     
 }
