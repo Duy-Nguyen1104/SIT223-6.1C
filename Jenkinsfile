@@ -16,19 +16,19 @@ pipeline {
                 success {
                     script {
                         archiveArtifacts artifacts: '**/*', excludes: ''
-                        emailext to: "duyng2311@gmail.com",
-                                 subject: "Jenkins Pipeline: Unit and Integration Tests Stage - ${currentBuild.currentResult}",
-                                 body: "The Unit and Integration Tests stage has completed with status: ${currentBuild.currentResult}.",
-                                 attachmentsPattern: 'archive/**/*.log'
+                        mail to: "duyng2311@gmail.com",
+                             subject: "Jenkins Pipeline: Unit and Integration Tests Stage - ${currentBuild.currentResult}",
+                             body: "The Unit and Integration Tests stage has completed with status: ${currentBuild.currentResult}.",
+                             attachmentsPattern: 'archive/**/*.log'
                     }
                 }
                 failure {
                     script {
                         archiveArtifacts artifacts: '**/*', excludes: ''
-                        emailext to: "duyng2311@gmail.com",
-                                 subject: "Jenkins Pipeline: Unit and Integration Tests Stage - ${currentBuild.currentResult}",
-                                 body: "Unit and integration tests failed. ${currentBuild.currentResult}.",
-                                 attachmentsPattern: 'archive/**/*.log'
+                        mail to: "duyng2311@gmail.com",
+                             subject: "Jenkins Pipeline: Unit and Integration Tests Stage - ${currentBuild.currentResult}",
+                             body: "Unit and integration tests failed. ${currentBuild.currentResult}.",
+                             attachmentsPattern: 'archive/**/*.log'
                     }
                 }
             }
@@ -48,19 +48,19 @@ pipeline {
                 success {
                     script {
                         archiveArtifacts artifacts: '**/*', excludes: ''
-                        emailext to: "duyng2311@gmail.com",
-                                 subject: "Jenkins Security Scan Notification - ${currentBuild.currentResult}",
-                                 body: "The Security Scan stage has completed with status: ${currentBuild.currentResult}.",
-                                 attachmentsPattern: 'archive/**/*.log'
+                        mail to: "duyng2311@gmail.com",
+                             subject: "Jenkins Security Scan Notification - ${currentBuild.currentResult}",
+                             body: "The Security Scan stage has completed with status: ${currentBuild.currentResult}.",
+                             attachmentsPattern: 'archive/**/*.log'
                     }
                 }
                 failure {
                     script {
                         archiveArtifacts artifacts: '**/*', excludes: ''
-                        emailext to: "duyng2311@gmail.com",
-                                 subject: "Jenkins Security Scan Notification - ${currentBuild.currentResult}",
-                                 body: "Security scan failed. ${currentBuild.currentResult}.",
-                                 attachmentsPattern: 'archive/**/*.log'
+                        mail to: "duyng2311@gmail.com",
+                             subject: "Jenkins Security Scan Notification - ${currentBuild.currentResult}",
+                             body: "Security scan failed. ${currentBuild.currentResult}.",
+                             attachmentsPattern: 'archive/**/*.log'
                     }
                 }
             }
@@ -84,4 +84,6 @@ pipeline {
             }
         }
     }
+    
+    
 }
