@@ -15,20 +15,20 @@ pipeline {
             }
             post {
                 success {
-                    emailext(
-                        to: 'duyng2311@gmail.com',
+                    
+                        mail to: 'duyng2311@gmail.com',
                         subject: 'Jenkins Test Notification',
                         body: 'All unit and integration tests passed',
                         attachmentsPattern: '**/*.log' // Adjust pattern as needed
-                    )
+                    
                 }
                 failure {
-                    emailext(
-                        to: 'duyng2311@gmail.com',
+                    
+                        mail to: 'duyng2311@gmail.com',
                         subject: 'Jenkins Test Failure',
                         body: 'Some tests failed. Please check the Jenkins logs for details.',
                         attachmentsPattern: '**/*.log' // Adjust pattern as needed
-                    )
+                    
                 }
             }
 
@@ -46,20 +46,20 @@ pipeline {
             }
             post {
                 success {
-                    emailext(
-                        to: 'duyng2311@gmail.com',
+                    
+                        mail to: 'duyng2311@gmail.com',
                         subject: 'Jenkins Security Scan Notification',
                         body: 'Security scan completed successfully',
                         attachmentsPattern: 'build.log'
-                    )
+                    
                 }
                 failure {
-                    emailext(
-                        to: 'duyng2311@gmail.com',
+                    
+                        mail to: 'duyng2311@gmail.com',
                         subject: 'Jenkins Security Scan Failure',
                         body: 'Security vulnerabilities detected. Please review the Jenkins logs for details.',
                         attachmentsPattern: 'build.log'
-                    )
+                    
                 }
             }
 
