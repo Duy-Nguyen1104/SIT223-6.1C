@@ -84,4 +84,19 @@ pipeline {
             }
         }
     }
+
+     post {
+        failure {
+            emailext subject: "Pipeline Failed",
+                     body: "Pipeline failed. See attached logs for details.",
+                     attachLog: true,
+                     to: "duyng2311@gmail.com"
+        }
+        success {
+            emailext subject: "Pipeline Succeeded",
+                     body: "Pipeline succeeded. See attached logs for details.",
+                     attachLog: true,
+                     to: "duyng2311@gmail.com"
+        }
+    }
 }
