@@ -15,17 +15,20 @@ pipeline {
             }
             post {
                 success {
-                    mail to: 'duyng2311@gmail.com',
-                    subject: 'Jenkins Test Notification',
-                    body: 'All unit and integration tests passed',
-                    attachLog: true
+                    emailext(
+                        to: 'duyng2311@gmail.com',
+                        subject: 'Jenkins Test Notification',
+                        body: 'All unit and integration tests passed',
+                        attachLog: true
+                    )
                 }
                 failure {
-                    mail to: 'duyng2311@gmail.com',
-                    subject: 'Jenkins Test Failure',
-                    body: 'Some tests failed. Please check the Jenkins logs for details.',
-                    attachLog: true
-                    
+                    emailext(
+                        to: 'duyng2311@gmail.com',
+                        subject: 'Jenkins Test Failure',
+                        body: 'Some tests failed. Please check the Jenkins logs for details.',
+                        attachLog: true
+                    )
     }
             }
         }
