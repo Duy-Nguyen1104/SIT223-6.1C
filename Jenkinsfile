@@ -15,13 +15,13 @@ pipeline {
             }
             post {
                 success {
-                    email to: 'duyng2311@gmail.com',
+                    mail to: 'duyng2311@gmail.com',
                     subject: 'Jenkins Test Notification',
                     body: 'All unit and integration tests passed',
                     attachLog: true
                 }
                 failure {
-                    email to: 'duyng2311@gmail.com',
+                    mail to: 'duyng2311@gmail.com',
                     subject: 'Jenkins Test Failure',
                     body: 'Some tests failed. Please check the Jenkins logs for details.',
                     attachLog: true
