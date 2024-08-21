@@ -21,7 +21,7 @@ pipeline {
                 }
                 failure {
                     emailext subject: "Jenkins Pipeline: Unit and Integration Tests Stage - ${currentBuild.currentResult}",
-                            body: "The Unit and integration tests failed. ${currentBuild.currentResult}",
+                            body: "The Unit and Integration tests failed. ${currentBuild.currentResult}",
                             attachLog: true,
                             to: "duyng2311@gmail.com"
                 }
@@ -49,7 +49,7 @@ pipeline {
                 }
                 failure {
                     emailext subject: "Jenkins Security Scan Notification - ${currentBuild.currentResult}",
-                            body: "Security scan failed. ${currentBuild.currentResult}",
+                            body: "Security Scan failed. ${currentBuild.currentResult}",
                             attachLog: true,
                             to: "duyng2311@gmail.com"
                 }
