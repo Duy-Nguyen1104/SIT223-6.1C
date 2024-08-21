@@ -19,7 +19,7 @@ pipeline {
                         to: 'duyng2311@gmail.com',
                         subject: 'Jenkins Test Notification',
                         body: 'All unit and integration tests passed',
-                        attachLog: true
+                        attachmentsPattern: '**/*.log' // Adjust pattern as needed
                     )
                 }
                 failure {
@@ -27,10 +27,11 @@ pipeline {
                         to: 'duyng2311@gmail.com',
                         subject: 'Jenkins Test Failure',
                         body: 'Some tests failed. Please check the Jenkins logs for details.',
-                        attachLog: true
+                        attachmentsPattern: '**/*.log' // Adjust pattern as needed
                     )
-    }
+                }
             }
+
         }
         stage('Code Analysis') {
             steps {
@@ -49,7 +50,7 @@ pipeline {
                         to: 'duyng2311@gmail.com',
                         subject: 'Jenkins Security Scan Notification',
                         body: 'Security scan completed successfully',
-                        attachLog: true
+                        attachmentsPattern: 'build.log'
                     )
                 }
                 failure {
@@ -57,10 +58,11 @@ pipeline {
                         to: 'duyng2311@gmail.com',
                         subject: 'Jenkins Security Scan Failure',
                         body: 'Security vulnerabilities detected. Please review the Jenkins logs for details.',
-                        attachLog: true
+                        attachmentsPattern: 'build.log'
                     )
-    }
+                }
             }
+
         }
         stage('Deploy to Staging') {
             steps {
