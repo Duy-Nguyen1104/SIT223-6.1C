@@ -19,7 +19,7 @@ pipeline {
                         mail to: "duyng2311@gmail.com",
                              subject: "Jenkins Pipeline: Unit and Integration Tests Stage - ${currentBuild.currentResult}",
                              body: "The Unit and Integration Tests stage has completed with status: ${currentBuild.currentResult}.",
-                             attachmentsPattern: ''*/target/*.log'
+                             attachmentsPattern: '*/target/*.log'
                     }
                 }
                 failure {
