@@ -84,6 +84,25 @@ pipeline {
             }
         }
     }
+     post {
+        success {
+            script {
+                archiveArtifacts artifacts: '**/*', excludes: ''
+                mail to: "duyng2311@gmail.com",
+                     subject: "Pipeline Status",
+                     body: "${currentBuild.currentResult}",
+                     attachmentsPattern: 'archive/**/*.log'
+            }
+        }
+        failure {
+            script {
+                archiveArtifacts artifacts: '**/*', excludes: ''
+                mail to: "duyng2311@gmail.com",
+                     subject: "Build Failed",
+                     body: "${currentBuild.currentResult}",
+                     attachmentsPattern: 'archive/**/*.log'
+            }
+        }
     
     
 }
