@@ -48,7 +48,7 @@ pipeline {
                             to: "duyng2311@gmail.com"
                 }
                 failure {
-                    emailext subject: "Jenkins Security Scan Notification - ${currentBuild.currentResult}",
+                    emailext subject: "Jenkins Security Scan notification - ${currentBuild.currentResult}",
                             body: "Security Scan failed. ${currentBuild.currentResult}",
                             attachLog: true,
                             to: "duyng2311@gmail.com"
