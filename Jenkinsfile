@@ -31,7 +31,7 @@ pipeline {
         
         stage('Code Analysis') {
             steps {
-                echo 'Performing code analysis with SonarQube'
+                echo 'Performing code analysis with SonarQube in jenkins'
             }
         }
         
